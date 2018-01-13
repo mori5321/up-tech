@@ -1,0 +1,9 @@
+#nav
+  - if current_user
+    = link_to "SignOut", :sign_out, method: :post
+  - else
+    = link_to "SignUp", :sign_up
+    = link_to "SignIn", :sign_in
+  %div
+    %p#notice= flash[:notice]
+    %p#alert= flash[:alert]
