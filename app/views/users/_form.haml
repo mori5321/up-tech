@@ -1,0 +1,27 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= pluralize(@user.errors.count, "error") + "件のエラーが発生しています"
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+  .samp
+    = f.label :name, "名前"
+    = f.text_field :name
+  .samp
+    = f.label :email, "Email"
+    = f.email_field :email
+  .samp
+    = f.label :password, "パスワード"
+    = f.password_field :password
+  .samp
+    = f.label :password_confirmation, "パスワード確認"
+    = f.password_field :password_confirmation
+  .samp
+    = f.label :role, "ポジション"
+    = f.select :role, [["Staff", 0], ["Manager", 1]]
+  .samp
+    = f.label :superior_id, "上長"
+    = f.select :superior_id, [["サンプル部長", 1], ["水森課長", 2]]
+  .samp
+    = f.submit

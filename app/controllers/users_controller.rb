@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'Userは正常に作成されました'
+      #TODO: redirect先を変更
+      redirect_to :sign_up, notice: 'Userは正常に作成されました'
     else
       render :new
     end
@@ -14,6 +15,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :role, :superior_id)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :superior_id)
     end
 end
