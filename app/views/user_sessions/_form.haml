@@ -1,0 +1,9 @@
+= form_with url: user_sessions_path do |f|
+  .samp
+    = f.label :email
+    = f.email_field :email
+  .samp
+    = f.label :password
+    = f.password_field :password
+  .samp
+    = f.submit
