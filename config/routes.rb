@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:create]
   resources :menu, only: :index
+  resources :reports, only: :new
 
   resources :tasks, only: [:new, :create, :show] do
     collection do
