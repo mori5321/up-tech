@@ -37,6 +37,12 @@ class Task < ApplicationRecord
     self.finish_datetime = datetime.advance(hours: finish_hour, minutes: finish_minute)
   end
 
+  def set_datetime_for_weekly_task
+    datetime = week.to_datetime
+    self.start_datetime = datetime
+    self.finish_datetime = datetime.end_of_week
+  end
+
   def set_datetime_for_monthly_task
     year_int = month.split("-")[0].to_i
     month_int = month.split("-")[1].to_i
