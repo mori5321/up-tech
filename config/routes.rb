@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create]
   resources :menu, only: :index
   resources :reports, only: :new
+  resources :comments, only: [:new, :create]
 
   resources :tasks, only: [:new, :create, :show] do
     collection do
