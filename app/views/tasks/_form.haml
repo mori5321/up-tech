@@ -16,20 +16,20 @@
 
   / TODO 部分テンプレートに分ける 月次, 週次, 日次
   / 月次タスク用
-  .samp{style: "display: none"}
-    %h3 月次タスク用
+  .samp
+    %h3 月次タスク用(JSで出したり消したりする)
     = f.label :month
-    %input{type: 'month', name: 'month' }
+    = f.month_field :month
 
   / 週次タスク用
-  .samp{style: "display: none"}
-    %h3 週次タスク用
+  .samp
+    %h3 週次タスク用(JSで出したり消したりする)
     = f.label :week
-    %input{type: 'week', name: 'week' }
+    = f.week_field :week
 
   / 日時タスク用
   .samp
-    %h3 日時タスク用
+    %h3 日時タスク用(JSで出したり消したりする)
     = f.label :date, "日付"
     = f.date_field :date
     = f.label :start_time, "開始時刻"
