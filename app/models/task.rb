@@ -14,6 +14,7 @@ class Task < ApplicationRecord
   validates :start_datetime, presence: true
   validates :finish_datetime, presence: true
   validates :user_id, presence: true
+  validate  :start_datetime_should_be_less_than_finish_datetime
 
   before_validation :set_datetime
 
@@ -54,6 +55,10 @@ class Task < ApplicationRecord
     month_int = month.split("-")[1].to_i
     self.start_datetime = DateTime.new(year_int, month_int)
     self.finish_datetime = start_datetime.end_of_month
+  end
+
+  def start_datetime_should_be_less_than_finish_datetime
+    errors.add(:start_date, "をfinish_dateより前に入力してください") unless start_datetime <= finish_datetime
   end
 
   # 日付処理: 参考文献
