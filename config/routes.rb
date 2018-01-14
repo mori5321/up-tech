@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   # adminがUserを作成する仕様かと判断しこめんとアウト
   # get 'sign_up' => 'users#new', as: :sign_up
   get 'sign_in' => 'user_sessions#new', as: :sign_in
-  post 'logout' => 'user_sessions#destroy', as: :sign_out
+  post 'sign_out' => 'user_sessions#destroy', as: :sign_out
 end
