@@ -1,4 +1,11 @@
 = form_for @task do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2= @task.errors.count.to_s + "件のエラーが発生しています"
+      %ul
+        - @task.errors.full_messages.each do |message|
+          %li= message
+
   .samp
     = f.label :title, 'タスク名'
     = f.text_field :title

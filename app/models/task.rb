@@ -9,7 +9,13 @@ class Task < ApplicationRecord
     monthly: 2
   }
 
-  before_save :set_datetime
+  validates :title, presence: true
+  validates :kind, presence: true
+  validates :start_datetime, presence: true
+  validates :finish_datetime, presence: true
+  validates :user_id, presence: true
+
+  before_validation :set_datetime
 
   def set_datetime
     binding.pry
