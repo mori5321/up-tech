@@ -12,6 +12,7 @@ class Task < ApplicationRecord
   before_save :set_datetime
 
   def set_datetime
+    binding.pry
     case kind
     when 'daily'
       set_datetime_for_daily_task
@@ -35,4 +36,14 @@ class Task < ApplicationRecord
     self.start_datetime = datetime.advance(hours: start_hour, minutes: start_minute)
     self.finish_datetime = datetime.advance(hours: finish_hour, minutes: finish_minute)
   end
+
+  def set_datetime_for_weekly_task
+    year_int = month.split("-")[0].to_i
+    month_int = month.split("-")[1].to_i
+    self.start_datetime = DateTime.new(year_int, month_int)
+    self.finish_datetime = start_datetime.end_of_month
+  end
+
+  # 日付処理: 参考文献
+  # https://qiita.com/prgseek/items/c0fc2ffc8e1736348486
 end
