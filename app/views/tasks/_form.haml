@@ -1,0 +1,37 @@
+= form_for @task do |f|
+  .samp
+    = f.label :title, 'タスク名'
+    = f.text_field :title
+
+  / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
+  / 方針②各フォームを作成する。(月, 週, 日)
+  // 一旦①の方向で実装を進める。
+  .samp
+    = f.label :monthly
+    = f.radio_button :kind, :monthly
+    = f.label :weekly
+    = f.radio_button :kind, :weekly
+    = f.label :daily
+    = f.radio_button :kind, :daily, checked: true
+
+  / TODO 部分テンプレートに分ける 月次, 週次, 日次
+  / 月次タスク用
+  .samp
+    = f.label :month
+    %input{type: 'month', name: 'month' }
+
+  / 週次タスク用
+  .samp
+    = f.label :week
+    %input{type: 'week', name: 'week' }
+
+  / 日次タスク用
+  .samp
+    = f.label :start_datetime, '開始日時'
+    = f.datetime_field :start_datetime
+  .samp
+    = f.label :start_datetime, '終了日時'
+    = f.datetime_field :start_datetime
+
+  .samp
+    = f.submit "登録"
