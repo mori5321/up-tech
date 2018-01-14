@@ -5,6 +5,9 @@ class TasksController < ApplicationController
   def create
   end
 
+  def show
+  end
+
   def monthly
   end
 
