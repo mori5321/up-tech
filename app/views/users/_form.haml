@@ -1,7 +1,7 @@
 = form_for @user do |f|
   - if @user.errors.any?
     #error_explanation
-      %h2= pluralize(@user.errors.count, "error") + "件のエラーが発生しています"
+      %h2= @user.errors.count.to_s + "件のエラーが発生しています"
       %ul
         - @user.errors.full_messages.each do |message|
           %li= message
