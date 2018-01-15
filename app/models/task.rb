@@ -19,7 +19,6 @@ class Task < ApplicationRecord
   before_validation :set_datetime
 
   def set_datetime
-    binding.pry
     case kind
     when 'daily'
       set_datetime_for_daily_task
