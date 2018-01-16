@@ -5,6 +5,12 @@ describe Task do
     expect(build(:task)).to be_valid
   end
 
+  it 'invalid without name' do
+    task = (build(:task, title: nil))
+    task.valid?
+    expect(task.errors[:title]).to include("can't be blank")
+  end
+
   describe "datetime" do
     it "is valid when start_datetime is less than finish_datetime" do
       task = build(:task, start_time: "10:00", finish_time: "10:01")
