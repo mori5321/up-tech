@@ -16,6 +16,13 @@ Things you may want to cover:
 * Database initialization
 
 * How to run the test suite
+```
+### 自動テスト
+be guard
+
+### ↑実行中に
+Enter → 全テスト実施
+```
 
 * Services (job queues, cache servers, search engines, etc.)
 
