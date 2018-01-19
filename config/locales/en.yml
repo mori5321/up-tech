@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  banken:
+    default: "You cannot perform this action"
+    tasks_loyalty:
+      show?: "You cannot show this task"
+    reports_loyalty:
+      new?: "You cannot post this report"
