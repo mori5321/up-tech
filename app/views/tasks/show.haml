@@ -1,2 +1,11 @@
 %h1 ポップアップ(タスク) ※Ajaxでポップアップ的にするかも
-= link_to "完了", new_task_report_path(@task)
+
+.samp
+  = @task.title
+.samp
+  = @task.kind
+.samp
+  = @task.start_datetime
+  = @task.finish_datetime
+.samp
+  = link_to "完了", new_task_report_path(@task)
