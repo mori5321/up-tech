@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :reports, only: :new
   resources :comments, only: [:new, :create]
 
-  resources :tasks, only: [:new, :create, :show] do
+  resources :tasks, only: [:index, :new, :create, :show] do
     collection do
       get 'monthly'
       get 'weekly'
