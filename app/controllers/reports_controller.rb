@@ -1,7 +1,11 @@
 class ReportsController < ApplicationController
+
+  include Banken
+
   def new
     @task = Task.find(params[:task_id])
     @report = @task.reports.build
+    authorize! @task
   end
 
   def create
