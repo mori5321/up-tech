@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
+  has_many :reports
 
   attr_accessor :month, :week, :date, :start_time, :finish_time
 
