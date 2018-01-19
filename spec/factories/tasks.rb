@@ -10,11 +10,17 @@ FactoryGirl.define do
     factory :weekly_task do
       kind 1
       week "2018W01"
+      date nil
+      start_time nil
+      finish_time nil
     end
 
     factory :monthly_task do
       kind 2
       month "2018-01"
+      date nil
+      start_time nil
+      finish_time nil
     end
   end
 end

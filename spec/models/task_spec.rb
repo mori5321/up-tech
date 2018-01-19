@@ -9,13 +9,13 @@ describe Task do
       expect(task).to be_valid
     end
 
-    it "has an attribute monthly_task" do
+    it "has an attribute daily_task" do
       expect(task.kind).to eq "daily"
     end
 
 
-    # 以上系
-    it 'is invalid without name' do
+    # 異常系
+    it 'is invalid without title' do
       task.title = nil
       task.valid?
       expect(task.errors[:title]).to include("can't be blank")
