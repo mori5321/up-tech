@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+  include Banken
+
   def index
     @tasks = current_user.tasks
   end
@@ -19,6 +21,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    authorize! @task
   end
 
   def monthly
