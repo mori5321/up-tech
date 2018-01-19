@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
+  include Banken
+
   def new
     @user = User.new
     authorize! @user
