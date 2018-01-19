@@ -1,5 +1,8 @@
-- if flash[:error].any?
+- if flash[:error]
   %div
     = flash[:error]
 %h1 メニュー
-= link_to "ユーザー登録", new_user_path
+- if loyalty(current_user, :comments).new?
+  = link_to "タスクチェック", new_comment_path
+- if current_user.admin?
+  = link_to "ユーザー登録", new_user_path
