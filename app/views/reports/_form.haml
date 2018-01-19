@@ -9,7 +9,6 @@
   / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
   / 方針②各フォームを作成する。(月, 週, 日)
   // 一旦①の方向で実装を進める。
-  = f.hidden_field :kind, value: @task.kind
 
   / 月次タスク用
   = render partial: "shared/forms/month", locals: { f: f }

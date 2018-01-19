@@ -15,6 +15,6 @@ class ReportsController < ApplicationController
 
   private
     def report_params
-      params.require(:report).permit(:kind, :start_time, :finish_time, :date, :week, :month).merge(task_id: params[:task_id])
+      params.require(:report).permit(:start_time, :finish_time, :date, :week, :month).merge(task_id: params[:task_id])
     end
 end

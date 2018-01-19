@@ -1,2 +1,9 @@
 %h1 タスク報告
+
+%div
+  %small タスク名
+%div
+  = @task.title
+%div
+  = "#{@task.kind}"
 = render "form"
