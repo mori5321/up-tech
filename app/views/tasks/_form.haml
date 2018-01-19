@@ -21,28 +21,13 @@
     = f.label :daily
     = f.radio_button :kind, :daily, checked: true
 
-  / TODO 部分テンプレートに分ける 月次, 週次, 日次
   / 月次タスク用
-  .samp
-    %h3 月次タスク用(JSで出したり消したりする)
-    = f.label :month
-    = f.month_field :month
+  = render partial: "shared/forms/month", locals: { f: f }
 
   / 週次タスク用
-  .samp
-    %h3 週次タスク用(JSで出したり消したりする)
-    = f.label :week
-    = f.week_field :week
+  = render partial: "shared/forms/week", locals: { f: f }
 
   / 日時タスク用
-  .samp
-    %h3 日時タスク用(JSで出したり消したりする)
-    = f.label :date, "日付"
-    = f.date_field :date
-    = f.label :start_time, "開始時刻"
-    = f.time_field :start_time
-    = f.label :finish_time, "終了時刻"
-    = f.time_field :finish_time
-
+  = render partial: "shared/forms/day", locals: { f: f }
   .samp
     = f.submit "登録"
