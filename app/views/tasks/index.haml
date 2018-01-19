@@ -1,0 +1,9 @@
+= link_to "タスク作成", new_task_path
+
+%h1
+  タスク一覧
+%ul
+  - @tasks.each do |task|
+    %li
+      = task.title
+      = link_to "詳細", task_path(task)

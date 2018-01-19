@@ -1,25 +1,14 @@
-= form_for @task do |f|
-  - if @task.errors.any?
+= form_for [@task, @report] do |f|
+  - if @report.errors.any?
     #error_explanation
-      %h2= @task.errors.count.to_s + "件のエラーが発生しています"
+      %h2= @report.errors.count.to_s + "件のエラーが発生しています"
       %ul
-        - @task.errors.full_messages.each do |message|
+        - @report.errors.full_messages.each do |message|
           %li= message
-
-  .samp
-    = f.label :title, 'タスク名'
-    = f.text_field :title
 
   / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
   / 方針②各フォームを作成する。(月, 週, 日)
   // 一旦①の方向で実装を進める。
-  .samp
-    = f.label :monthly
-    = f.radio_button :kind, :monthly
-    = f.label :weekly
-    = f.radio_button :kind, :weekly
-    = f.label :daily
-    = f.radio_button :kind, :daily, checked: true
 
   / 月次タスク用
   = render partial: "shared/forms/month", locals: { f: f }

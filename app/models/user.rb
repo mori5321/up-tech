@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :crypted_password, presence: true
   validates :salt, presence: true
+
+  has_many :tasks
 end

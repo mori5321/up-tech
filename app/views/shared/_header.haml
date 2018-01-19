@@ -1,5 +1,9 @@
 #nav
   - if current_user
+    = link_to "タスク一覧", tasks_path
+    = link_to "月", monthly_tasks_path
+    = link_to "週", weekly_tasks_path
+    = link_to "日", daily_tasks_path
     = link_to "SignOut", :sign_out, method: :post
   - else
     / = link_to "SignUp", :sign_up
