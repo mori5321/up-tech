@@ -1,5 +1,5 @@
 class ReportsLoyalty < ApplicationLoyalty
-  def new?
+  def create?
     user.id == record.user_id
   end
 end
