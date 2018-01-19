@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:create]
   resources :menu, only: :index
-  resources :reports, only: :new
   resources :comments, only: [:new, :create]
 
   resources :tasks, only: [:index, :new, :create, :show] do
+    resources :reports, only: [:new, :create]
     collection do
       get 'monthly'
       get 'weekly'
