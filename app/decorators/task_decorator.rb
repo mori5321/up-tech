@@ -1,13 +1,7 @@
 class TaskDecorator < ApplicationDecorator
   delegate_all
 
-  def slashed_start_datetime
-    start_datetime.strftime("%m/%d %H:%M")
-  end
-
-  def slashed_finish_datetime
-    finish_datetime.strftime("%m/%d %H:%M")
-  end
+  include TimeStampDecoratable
   #
   #   def created_at
   #     helpers.content_tag :span, class: 'time' do
