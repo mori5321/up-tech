@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
-  has_many :reports
+  has_one :report
 
   attr_accessor :month, :week, :date, :start_time, :finish_time
 
@@ -18,6 +18,8 @@ class Task < ApplicationRecord
   validate  :start_datetime_should_be_less_than_finish_datetime
 
   include DateTimeConvertable
+
+  scope :dones, -> { select{ |t| t.report.present? } }
 
   private
 
