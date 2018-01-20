@@ -1,8 +1,12 @@
 class TaskDecorator < ApplicationDecorator
   delegate_all
 
-  def start_datetime
-    start_datetime.in_time_zone('Tokyo')
+  def slashed_start_datetime
+    start_datetime.strftime("%m/%d %H:%M")
+  end
+
+  def slashed_finish_datetime
+    finish_datetime.strftime("%m/%d %H:%M")
   end
   #
   #   def created_at
