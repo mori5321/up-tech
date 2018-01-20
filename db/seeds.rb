@@ -12,7 +12,7 @@
     password_confirmation: 'password'
   )
 
-  1000.times do |num_for_task|
+  100.times do |num_for_task|
     title = Faker::Cat.name
     kind = num_for_task % 3
     date = Faker::Date.between(Date.today, 2.day.from_now)
