@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :comments
   has_many :subordinate_users, class_name: 'User', foreign_key: :superior_id
-  belongs_to :superior_user, class_name: 'User', foreign_key: :superior_id
+  belongs_to :superior_user, class_name: 'User', foreign_key: :superior_id, optional: true
 
   enum role: {
     guest: 0,
@@ -23,7 +23,8 @@ class User < ApplicationRecord
   validates :salt, presence: true
 
   #TODO: need to test this method.
-  def subordinate_users_reports
-    subordinate_users.map{|user| user.tasks.map{ |task| task.report } }.flatten
+  def subordinate_users_report_to_be_checked
+    subordinates_ids = subordinate_users.ids
+    Report.eager_load(:task).where("checked= ? and tasks.user_id IN (?)", false, subordinates_ids)
   end
 end
