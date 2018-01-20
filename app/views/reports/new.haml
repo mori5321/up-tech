@@ -14,11 +14,14 @@
         %li
           %h4.title タスク名
           %p
-            プロジェクトMTG
-            %span 月タスク
+            = @task.title
+            %span
+              = "#{@task.kind}"
           %h4.title 予定日時
           %p 2017/02/03 (月) 12:00
+
     .task-report-time
+      = render "form"
       %ul
         %li
           %h4.title 実行日時
