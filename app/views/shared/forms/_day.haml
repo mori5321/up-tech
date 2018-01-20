@@ -1,8 +1,14 @@
 .samp
-  %h3 日時タスク用(JSで出したり消したりする)
-  = f.label :date, "日付"
-  = f.date_field :date
-  = f.label :start_time, "開始時刻"
-  = f.time_field :start_time
-  = f.label :finish_time, "終了時刻"
-  = f.time_field :finish_time
+  %h5.title 日時タスク用(JSで出したり消したりする)
+  .input-group.form-group-no-border.input-lg
+    %span.input-group-addon
+      = f.label :date, "日付"
+    = f.date_field :date, class: 'form-control'
+  .input-group.form-group-no-border.input-lg
+    %span.input-group-addon
+      = f.label :start_time, "開始時刻"
+    = f.time_field :start_time, class: 'form-control'
+  .input-group.form-group-no-border.input-lg
+    %span.input-group-addon
+      = f.label :finish_time, "終了時刻"
+    = f.time_field :finish_time, class: 'form-control'

@@ -1,1 +1,44 @@
-%h1 週表示
+.section
+  .container.calendar-weekly
+    .month
+      %ul
+        %li.prev
+          ❮
+          %span>< 前週
+        %li.next
+          %span>< 次週
+          ❯
+        %li
+          1月1日 - 1月7日
+          %br/
+          %span{:style => "font-size:12px"} 2017
+    .week-day
+      %ul
+        %li
+          .day-title 2月3日(月)
+          .day-content 終日
+        %li
+          .day-title 2月4日(火)
+          .day-content 終日
+        %li
+          .day-title 2月5日(水)
+          .day-content 終日
+        %li
+          .day-title 2月6日(木)
+          .day-content 終日
+        %li
+          .day-title 2月7日(金)
+          .day-content 終日
+        %li
+          .day-title 2月8日(土)
+          .day-content 終日
+        %li
+          .day-title 2月9日(日)
+          .day-content 終日
+    %ul.tasklist
+      %li
+        %span 月タスク
+        プロジェクト開始
+      %li
+        %span 月タスク
+        プロジェクト開始

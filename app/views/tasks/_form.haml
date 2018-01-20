@@ -1,33 +1,41 @@
-= form_for @task do |f|
-  - if @task.errors.any?
-    #error_explanation
-      %h2= @task.errors.count.to_s + "件のエラーが発生しています"
-      %ul
-        - @task.errors.full_messages.each do |message|
-          %li= message
+.row.justify-content-md-center
+  .col-md-4
+    = form_for @task do |f|
+      - if @task.errors.any?
+        #error_explanation
+          %h2= @task.errors.count.to_s + "件のエラーが発生しています"
+          %ul
+            - @task.errors.full_messages.each do |message|
+              %li= message
 
-  .samp
-    = f.label :title, 'タスク名'
-    = f.text_field :title
+      %h5.title タスク名
+      .input-group.form-group-no-border.input-lg
+        = f.text_field :title, class: 'form-control', placeholder: 'タスク名を入力'
 
-  / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
-  / 方針②各フォームを作成する。(月, 週, 日)
-  // 一旦①の方向で実装を進める。
-  .samp
-    = f.label :monthly
-    = f.radio_button :kind, :monthly
-    = f.label :weekly
-    = f.radio_button :kind, :weekly
-    = f.label :daily
-    = f.radio_button :kind, :daily, checked: true
+      / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
+      / 方針②各フォームを作成する。(月, 週, 日)
+      // 一旦①の方向で実装を進める。
+      %h5.title タスク期間選択
+      .row
+        .radio.col-4
+          = f.radio_button :kind, :monthly
+          = f.label :monthly, for: 'task_kind_monthly'
+        .radio.col-4
+          = f.radio_button :kind, :weekly
+          = f.label :weekly, for: 'task_kind_weekly'
+        .radio.col-4
+          = f.radio_button :kind, :daily, checked: true
+          = f.label :daily, for: 'task_kind_daily'
 
-  / 月次タスク用
-  = render partial: "shared/forms/month", locals: { f: f }
+      / TODO 部分テンプレートに分ける 月次, 週次, 日次
+      / 月次タスク用
+      = render partial: "shared/forms/month", locals: { f: f }
 
-  / 週次タスク用
-  = render partial: "shared/forms/week", locals: { f: f }
+      / 週次タスク用
+      = render partial: "shared/forms/week", locals: { f: f }
 
-  / 日時タスク用
-  = render partial: "shared/forms/day", locals: { f: f }
-  .samp
-    = f.submit "登録"
+      / 日時タスク用
+      = render partial: "shared/forms/day", locals: { f: f }
+
+      .samp
+        = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'

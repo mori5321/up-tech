@@ -1,8 +1,20 @@
-- if flash[:error]
-  %div
-    = flash[:error]
-%h1 メニュー
-- if loyalty(nil, :comments).new?
-  = link_to "タスクチェック", new_comment_path
-- if loyalty(nil, :users).new?
-  = link_to "ユーザー登録", new_user_path
+%header.header-nav.navbar.navbar-expand-lg.bg-uptech.fixed-top
+  .col-12.text-center
+    メニュー
+
+.section.menu
+  .container
+    - if flash[:error]
+      %div
+        = flash[:error]
+    %ul
+      - if loyalty(nil, :comments).new?
+        %li
+          = link_to "タスクチェック", new_comment_path
+      - if loyalty(nil, :users).new?
+        %li
+          = link_to "ユーザー登録", new_user_path
+    %h6.title その他
+    %ul
+      %li
+        = link_to "ログアウト", :sign_out, method: :post

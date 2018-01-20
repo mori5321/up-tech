@@ -1,14 +1,5 @@
-#nav
-  - if current_user
-    = link_to "タスク一覧", tasks_path
-    = link_to "月", monthly_tasks_path
-    = link_to "週", weekly_tasks_path
-    = link_to "日", daily_tasks_path
-    = link_to "Menu", menu_index_path
-    = link_to "SignOut", :sign_out, method: :post
-  - else
-    / = link_to "SignUp", :sign_up
-    = link_to "SignIn", :sign_in
-  %div
-    %p#notice= flash[:notice]
-    %p#alert= flash[:alert]
+%nav.navbar.navbar-expand-lg.bg-uptech.fixed-top{"color-on-scroll" => "400"}
+  .container
+    .navbar-translate
+      %a.navbar-brand{href: "/"}
+        = image_tag 'logo-white.svg', alt: 'Uptech'

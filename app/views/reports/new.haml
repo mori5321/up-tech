@@ -1,9 +1,32 @@
-%h1 タスク報告
+%header.header-nav.navbar.navbar-expand-lg.bg-uptech.fixed-top
+  .left-nav.col-3
+    %a{:onclick => "history.back()", :href => '#'} 戻る
+  .col-6.text-center
+    タスク報告
+  .right-nav.col-3
 
-%div
-  %small タスク名
-%div
-  = @task.title
-%div
-  = "#{@task.kind}"
-= render "form"
+
+%section.section.task-report
+  // = form_for @report do |f|
+  = form_for '' do |f|
+    .task-details
+      %ul
+        %li
+          %h4.title タスク名
+          %p
+            = @task.title
+            %span
+              = "#{@task.kind}"
+          %h4.title 予定日時
+          %p 2017/02/03 (月) 12:00
+
+    .task-report-time
+      = render "form"
+      %ul
+        %li
+          %h4.title 実行日時
+          = f.date_field :date, class: 'form-control'
+        %li
+          %h4.title 実行時間
+          = f.time_field :start_time, class: 'form-control'
+      = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'
