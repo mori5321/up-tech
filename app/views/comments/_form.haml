@@ -1,0 +1,6 @@
+= form_for @comment do |f|
+  %div
+    = f.label :text, "コメント"
+    = f.text_field :text
+  %div
+    = f.submit "送信"

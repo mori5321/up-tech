@@ -1,1 +1,14 @@
 %h1 タスクチェック
+%div= "タスク名: #{@task.title}"
+%div= ""
+%div
+  = "予定日時"
+  = "#{@task.slashed_start_datetime} ~ #{@task.slashed_finish_datetime}"
+%div
+  = "実行日時"
+  = "#{@report.slashed_start_datetime} ~ #{@report.slashed_finish_datetime}"
+%div
+  伸びしろあり
+%div
+  いいね
+= render "form"
