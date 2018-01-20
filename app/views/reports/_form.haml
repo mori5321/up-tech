@@ -1,0 +1,22 @@
+= form_for [@task, @report] do |f|
+  - if @report.errors.any?
+    #error_explanation
+      %h2= @report.errors.count.to_s + "件のエラーが発生しています"
+      %ul
+        - @report.errors.full_messages.each do |message|
+          %li= message
+
+  / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
+  / 方針②各フォームを作成する。(月, 週, 日)
+  // 一旦①の方向で実装を進める。
+
+  / 月次タスク用
+  = render partial: "shared/forms/month", locals: { f: f }
+
+  / 週次タスク用
+  = render partial: "shared/forms/week", locals: { f: f }
+
+  / 日時タスク用
+  = render partial: "shared/forms/day", locals: { f: f }
+  .samp
+    = f.submit "登録"

@@ -1,4 +1,11 @@
 class TasksController < ApplicationController
+
+  include Banken
+
+  def index
+    @tasks = current_user.tasks
+  end
+
   def new
     @task = Task.new
   end
@@ -13,6 +20,9 @@ class TasksController < ApplicationController
   end
 
   def show
+    task = Task.find(params[:id])
+    @task = task.decorate
+    authorize! @task
   end
 
   def monthly
