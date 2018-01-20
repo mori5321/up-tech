@@ -5,12 +5,12 @@
 .section.menu
   .container
     - if flash[:error]
-    %div
-      = flash[:error]
+      %div
+        = flash[:error]
     %ul
       - if loyalty(nil, :comments).new?
         %li
-           = link_to "タスクチェック", new_comment_path
+          = link_to "タスクチェック", new_comment_path
       - if loyalty(nil, :users).new?
         %li
           = link_to "ユーザー登録", new_user_path
