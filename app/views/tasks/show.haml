@@ -1,2 +1,34 @@
-%h1 ポップアップ(タスク) ※Ajaxでポップアップ的にするかも
-= link_to "報告", new_report_path
+%header.header-nav.navbar.navbar-expand-lg.bg-uptech.fixed-top
+  .left-nav.col-3
+    %a{:onclick => "history.back()", :href => '#'} 戻る
+  .col-6.text-center
+    タスク詳細
+  .right-nav.col-3
+    = link_to '編集' #
+
+%section.section.task-show
+  .task-details
+    %ul
+      %li
+        %h4.title タスク名
+        %p
+          プロジェクトMTG
+          %span 月タスク
+        %h4.title 予定日時
+        %p 2017/02/03 (月) 12:00
+  .task-actions
+    .row
+      .col-6
+        = link_to new_report_path, class: 'btn btn-uptech btn-round btn-lg btn-block' do
+          持ち越し
+      .col-6
+        = link_to new_report_path, class: 'btn btn-uptech btn-round btn-lg btn-block' do
+          完了
+  .task-comments
+    %h5.title 上長からのコメント
+    %p コメントです
+    .task-comments-status
+      %ul
+        %li 上長からいいねされました
+        %li 上長から伸びしろありと評価されています
+

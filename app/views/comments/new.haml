@@ -1,1 +1,36 @@
-%h1 タスクチェック
+%header.header-nav.navbar.navbar-expand-lg.bg-uptech.fixed-top
+  .left-nav.col-3
+    %a{:onclick => "history.back()", :href => '#'} 戻る
+  .col-6.text-center
+    タスクチェック
+  .right-nav.col-3
+
+
+%section.section.task-show
+  .task-details
+    %ul
+      %li
+        %h4.title タスク名
+        %p
+          プロジェクトMTG
+          %span 月タスク
+        %h4.title 予定日時
+        %p 2017/02/03 (月) - 02/05(水)
+        %h4.title 実行日時
+        %p 2017/02/03 (月) - 02/05(水)
+  .task-check
+    = form_for '' do |f|
+      .row
+        .col-6.radio
+          .btn.btn-uptech.btn-round
+            = f.radio_button :kind, :nobishiro
+            = f.label '伸びしろあり', for: 'kind_nobishiro'
+
+        .col-6.radio
+          .btn.btn-uptech.btn-round
+            = f.radio_button :kind, :fix
+            = f.label '完了', for: 'kind_fix'
+        .col-12
+          %textarea.form-control{:placeholder => "コメントを入力", :rows => "5"}
+      .samp
+        = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'
