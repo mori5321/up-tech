@@ -21,8 +21,9 @@ module DateTimeConvertable
 
   private
   def assign_datetime_to_attributes(start_datetime, finish_datetime)
-    self.start_datetime = start_datetime
-    self.finish_datetime = finish_datetime
+    binding.pry
+    self.start_datetime = jst_to_utc(start_datetime)
+    self.finish_datetime = jst_to_utc(finish_datetime)
   end
   # HACK: need to refactor this method
   def datetime_hash_for_daily_task
@@ -51,7 +52,7 @@ module DateTimeConvertable
   end
 
   def jst_to_utc(datetime)
-    datetime.in_time_zone("UTC")
+    datetime.advance(hours: -9).in_time_zone("UTC")
   end
 
   def extract_from_time_str(time_str, type)
