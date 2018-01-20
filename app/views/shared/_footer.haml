@@ -1,13 +1,13 @@
 %ul.bottom-navigation
   %li
-    = link_to '月', '/tasks/monthly', class: 'active'
+    = link_to '月', monthly_tasks_path, class: 'active'
   %li
-    = link_to '週', '/tasks/weekly'
+    = link_to '週', weekly_tasks_path
   %li
-    = link_to '日', '/tasks/daily'
+    = link_to '日', daily_tasks_path
   %li
     = link_to '/tasks/new' do
       %span.now-ui-icons.ui-1_simple-add
   %li
-    %a{:href => "/menu"}
+     = link_to menu_index_path do
       %span.now-ui-icons.design_bullet-list-67
