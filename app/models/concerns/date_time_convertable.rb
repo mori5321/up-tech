@@ -16,15 +16,20 @@ module DateTimeConvertable
                     else
                       # 例外処理
                     end
-    assign_datetime_to_attributes(datetime_hash[:start_datetime], datetime_hash[:finish_datetime])
+    assign_jst_datetime_as_utc(datetime_hash[:start_datetime], datetime_hash[:finish_datetime])
   end
 
   private
-  def assign_datetime_to_attributes(start_datetime, finish_datetime)
-    binding.pry
+  #HACK: 必要に応じてもう一段階抽象化する。
+  def assign_jst_datetime_as_utc(start_datetime, finish_datetime)
     self.start_datetime = jst_to_utc(start_datetime)
     self.finish_datetime = jst_to_utc(finish_datetime)
   end
+
+  def jst_to_utc(datetime)
+    datetime.advance(hours: -9).in_time_zone("UTC")
+  end
+
   # HACK: need to refactor this method
   def datetime_hash_for_daily_task
     datetime = date.to_datetime
@@ -51,9 +56,6 @@ module DateTimeConvertable
     return { start_datetime: start_datetime, finish_datetime: start_datetime.end_of_month }
   end
 
-  def jst_to_utc(datetime)
-    datetime.advance(hours: -9).in_time_zone("UTC")
-  end
 
   def extract_from_time_str(time_str, type)
     case type
