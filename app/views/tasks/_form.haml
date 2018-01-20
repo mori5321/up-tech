@@ -29,15 +29,12 @@
 
       / TODO 部分テンプレートに分ける 月次, 週次, 日次
       / 月次タスク用
-      %h5.title 月次タスク用(JSで出したり消したりする)
       = render partial: "shared/forms/month", locals: { f: f }
 
       / 週次タスク用
-      %h5.title 週次タスク用(JSで出したり消したりする)
       = render partial: "shared/forms/week", locals: { f: f }
 
       / 日時タスク用
-      %h5.title 日時タスク用(JSで出したり消したりする)
       = render partial: "shared/forms/day", locals: { f: f }
 
       .samp
