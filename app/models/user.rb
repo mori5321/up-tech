@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :tasks
+  has_many :comments
 
   enum role: {
     guest: 0,
