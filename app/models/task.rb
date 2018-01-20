@@ -19,19 +19,6 @@ class Task < ApplicationRecord
 
   include DateTimeConvertable
 
-  def set_datetime
-    case kind
-    when 'daily'
-      set_datetime_for_daily_task
-    when 'weekly'
-      set_datetime_for_weekly_task
-    when 'monthly'
-      set_datetime_for_monthly_task
-    else
-      # 例外処理
-    end
-  end
-
   private
 
   def start_datetime_should_be_less_than_finish_datetime
