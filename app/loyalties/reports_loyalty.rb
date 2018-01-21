@@ -1,5 +1,5 @@
 class ReportsLoyalty < ApplicationLoyalty
   def create?
-    user.id == record.user_id
+    record.task.user.superior_id = current_user.id
   end
 end

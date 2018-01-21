@@ -5,16 +5,19 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:create]
   resources :menu, only: :index
-  resources :comments, only: [:new, :create]
+  resources :comments, only: :new
 
   resources :tasks, only: [:index, :new, :create, :show] do
-    resources :reports, only: [:new, :create]
+    resources :reports, only: [:new, :create], shallow: true do
+      resources :comments, only: :create
+    end
     collection do
       get 'monthly'
       get 'weekly'
       get 'daily'
     end
   end
+
 
   # adminがUserを作成する仕様かと判断しこめんとアウト
   # get 'sign_up' => 'users#new', as: :sign_up

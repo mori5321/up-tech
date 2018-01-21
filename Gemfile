@@ -44,6 +44,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
+  gem 'faker'
 end
 
 group :development do
@@ -57,7 +58,6 @@ end
 
 group :test do
   gem "database_cleaner"
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

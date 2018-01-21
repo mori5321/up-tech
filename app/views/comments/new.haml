@@ -1,6 +1,6 @@
 %header.header-nav.navbar.navbar-expand-lg.bg-uptech.fixed-top
   .left-nav.col-3
-    %a{:onclick => "history.back()", :href => '#'} 戻る
+  /   %a{:onclick => "history.back()", :href => '#'} 戻る
   .col-6.text-center
     タスクチェック
   .right-nav.col-3
@@ -12,25 +12,45 @@
       %li
         %h4.title タスク名
         %p
-          プロジェクトMTG
+          = @task.title
           %span 月タスク
+        %h4.title ユーザー名
+        %p
+          = @task.user.name
         %h4.title 予定日時
-        %p 2017/02/03 (月) - 02/05(水)
+        %p= @task.start_to_finish
         %h4.title 実行日時
         %p 2017/02/03 (月) - 02/05(水)
   .task-check
-    = form_for '' do |f|
+    = form_for [@report, @comment] do |f|
       .row
         .col-6.radio
           .btn.btn-uptech.btn-round
-            = f.radio_button :kind, :nobishiro
+            / = f.radio_button :kind, :nobishiro
             = f.label '伸びしろあり', for: 'kind_nobishiro'
 
         .col-6.radio
           .btn.btn-uptech.btn-round
-            = f.radio_button :kind, :fix
-            = f.label '完了', for: 'kind_fix'
+            / = f.radio_button :kind, :fix
+            = f.label 'いいね', for: 'kind_fix'
         .col-12
-          %textarea.form-control{:placeholder => "コメントを入力", :rows => "5"}
+          = f.text_area :text, class: "form-control", placeholder: 'コメントを入力', size: '20x2'
+          / %textarea.form-control{:placeholder => "コメントを入力", :rows => "5"}
       .samp
         = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'
+
+
+/ %h1 タスクチェック
+/ %div= "タスク名: #{@task.title}"
+/ %div= ""
+/ %div
+/   = "予定日時"
+/   = "#{@task.slashed_start_datetime} ~ #{@task.slashed_finish_datetime}"
+/ %div
+/   = "実行日時"
+/   = "#{@report.slashed_start_datetime} ~ #{@report.slashed_finish_datetime}"
+/ %div
+/   伸びしろあり
+/ %div
+/   いいね
+/ = render "form"
