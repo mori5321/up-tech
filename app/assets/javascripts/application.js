@@ -14,3 +14,5 @@
 //= require turbolinks
 //= require axios
 //= require_tree .
+
+axios.defaults.headers['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content')
