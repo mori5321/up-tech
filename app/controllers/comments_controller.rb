@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def new
     report = current_user.subordinate_users_reports_to_be_checked.first
+    return redirect_to menu_index_path if report.nil?
     @report = report.decorate
     task = @report.task
     @task = task.decorate
