@@ -20,10 +20,10 @@ class window.ScheduleForm
     ele.classList.add("hidden")
     inputs = ele.getElementsByTagName("input")
     for input in inputs
-      input.disabled = true
+      input.removeAttribute('required')
 
   showKindForm: (ele) ->
     ele.classList.remove("hidden")
     inputs = ele.getElementsByTagName("input")
     for input in inputs
-      input.disabled = false
+      input.removeAttribute('required')
