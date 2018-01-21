@@ -4,8 +4,11 @@ class ReportsController < ApplicationController
 
   def new
     @task = Task.find(params[:task_id])
-    @report = @task.reports.build
-    authorize! @task
+    if @task.report.present? #仮実装
+      redirect_to root_path
+    else
+      @report = @task.report.build
+    end
   end
 
   def create
