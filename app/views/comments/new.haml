@@ -32,7 +32,7 @@
         .col-6.radio
           .btn.btn-uptech.btn-round
             / = f.radio_button :kind, :fix
-            = f.label '完了', for: 'kind_fix'
+            = f.label 'いいね', for: 'kind_fix'
         .col-12
           = f.text_area :text, class: "form-control", placeholder: 'コメントを入力', size: '20x2'
           / %textarea.form-control{:placeholder => "コメントを入力", :rows => "5"}
