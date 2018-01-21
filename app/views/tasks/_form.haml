@@ -8,14 +8,14 @@
             - @task.errors.full_messages.each do |message|
               %li= message
 
-      %h5.title タスク名
+      / %h5.title タスク名
       .input-group.form-group-no-border.input-lg
         = f.text_field :title, class: 'form-control', placeholder: 'タスク名を入力'
 
       / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
       / 方針②各フォームを作成する。(月, 週, 日)
       // 一旦①の方向で実装を進める。
-      %h5.title タスク期間選択
+      / %h5.title タスク期間選択
       .row
         .radio.col-4
           = f.radio_button :kind, :monthly
