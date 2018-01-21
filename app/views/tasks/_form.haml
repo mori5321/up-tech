@@ -3,14 +3,14 @@
     = form_for @task do |f|
       - if @task.errors.any?
         #error_explanation
-          %h2= @task.errors.count.to_s + "件のエラーが発生しています"
+          / %h2= @task.errors.count.to_s + "件のエラーが発生しています"
           %ul
             - @task.errors.full_messages.each do |message|
               %li= message
 
       %h5.title タスク名
       .input-group.form-group-no-border.input-lg
-        = f.text_field :title, class: 'form-control', placeholder: 'タスク名を入力'
+        = f.text_field :title, class: 'form-control', placeholder: 'タスク名を入力', required: true
 
       / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
       / 方針②各フォームを作成する。(月, 週, 日)
