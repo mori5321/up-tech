@@ -1,11 +1,10 @@
 class window.Stamp
-  constructor: (button_id) ->
-    @button = document.getElementById(button_id)
+  constructor: (button_dom) ->
+    @button = button_dom
 
   onClickButton: () ->
     _self = this
     @button.addEventListener "click", (e) ->
-      console.log "morning"
       _self.sendRequest()
 
   sendRequest: ->
