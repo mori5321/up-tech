@@ -56,5 +56,7 @@
 / = render "form"
 
 :javascript
-  new Stamp('like').onClickButton()
-  new Stamp('potential').onClickButton()
+  var like = document.getElementById('like')
+  var potential = document.getElementById('potential')
+  new Stamp(like).onClickButton()
+  new Stamp(potential).onClickButton()
