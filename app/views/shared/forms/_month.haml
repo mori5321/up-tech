@@ -1,5 +1,6 @@
 .samp
-  %h3 月次タスク用(JSで出したり消したりする)
-  = f.label :month
-  = f.month_field :month
-
+  %h5.title 月次タスク用(JSで出したり消したりする)
+  .input-group.form-group-no-border.input-lg
+    %span.input-group-addon
+      = f.label :month
+    = f.month_field :month, class: 'form-control'

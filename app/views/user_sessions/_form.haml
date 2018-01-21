@@ -1,9 +1,21 @@
 = form_with url: user_sessions_path do |f|
-  .samp
-    = f.label :email
-    = f.email_field :email
-  .samp
-    = f.label :password
-    = f.password_field :password
-  .samp
-    = f.submit
+  .header.header-primary.text-center
+    .logo-container
+      = image_tag 'logo-black.svg', alt: 'Uptech'
+      ログイン
+    .content
+      .input-group.form-group-no-border.input-lg
+        %span.input-group-addon
+          %i.now-ui-icons.ui-1_email-85
+        = f.email_field :email, class: 'form-control', placeholder: 'メールアドレスを入力'
+      .input-group.form-group-no-border.input-lg
+        %span.input-group-addon
+          %i.now-ui-icons.ui-1_lock-circle-open
+        = f.password_field :password,  class: 'form-control', placeholder: 'パスワードを入力'
+
+    .footer.text-center
+      = f.submit :ログイン, class: 'btn btn-uptech btn-round btn-lg btn-block'
+    .pull-left
+      %h6
+        = link_to '/users/new', class: 'link' do
+          アカウントを作成する

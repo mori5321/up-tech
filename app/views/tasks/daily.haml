@@ -1,1 +1,104 @@
-%h1 日表示
+.section
+  .container.calendar-weekly
+    .month
+      %ul
+        %li.prev
+          ❮
+          %span>< 昨日
+        %li.next
+          %span>< 明日
+          ❯
+        %li
+          2月3日(土)
+          %br/
+          %span{:style => "font-size:12px"} 2017
+    .time
+      %table.calendar.table.table-bordered
+        %tbody
+          %tr
+            %td 08:00
+            %td.has-events{:rowspan => "1"}
+              .row-fluid.practice{:style => "width: 99%; height: 100%;"}
+                %span.title Calculus 1
+                %span.lecturer
+                  %a
+                    Mrs.
+                    Ak
+                %span.location 54/125
+          %tr
+            %td 08:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 09:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 09:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 10:00
+            %td.has-events{:rowspan => "4"}
+              .row-fluid.lecture{:style => "width: 99%; height: 100%;"}
+                %span.title Combinatorics
+                %span.lecturer
+                  %a
+                    Prof.
+                    Someone
+                %span.location 23/111
+          %tr
+            %td 10:30
+          %tr
+            %td 11:00
+          %tr
+            %td 11:30
+          %tr
+            %td 12:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 12:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 13:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 13:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 14:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 14:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 15:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 15:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 16:00
+            %td.has-events{:rowspan => "4"}
+              .row-fluid.practice{:style => "width: 99%; height: 100%;"}
+                %span.title Calculus 1
+                %span.lecturer
+                  %a
+                    Mrs.
+                    Ak
+                %span.location 54/125
+          %tr
+            %td 16:30
+          %tr
+            %td 17:00
+          %tr
+            %td 17:30
+          %tr
+            %td 18:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 18:30
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 19:00
+            %td.no-events{:rowspan => "1"}
+          %tr
+            %td 19:30
+            %td.no-events{:rowspan => "1"}
