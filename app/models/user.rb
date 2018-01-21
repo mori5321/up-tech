@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :salt, presence: true
 
   #TODO: need to test this method.
-  def subordinate_users_report_to_be_checked
+  def subordinate_users_reports_to_be_checked
     subordinates_ids = subordinate_users.ids
     Report.eager_load(:task).where("checked= ? and tasks.user_id IN (?)", false, subordinates_ids)
   end
