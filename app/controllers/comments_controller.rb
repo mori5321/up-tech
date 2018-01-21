@@ -10,8 +10,9 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @report = Report.find(params[:report_id])
     @comment = Comment.new(comment_params)
-    if @comment.save
+    if @comment.save && @report.check
       redirect_to action: :new
     else
       report = current_user.subordinate_users_reports_to_be_checked.first

@@ -15,6 +15,10 @@ class Report < ApplicationRecord
     task.kind
   end
 
+  def check
+    self.update_attribute("checked", true)
+  end
+
   private
     #HACK: need to refactor (to make this DRY).
     def start_datetime_should_be_less_than_finish_datetime
