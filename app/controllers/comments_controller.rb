@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
   def create
     @report = Report.find(params[:report_id])
+    authorize! @report
     @comment = Comment.new(comment_params)
     if @comment.save && @report.check
       redirect_to action: :new
