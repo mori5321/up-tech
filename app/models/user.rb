@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :tasks
   has_many :comments
+  has_many :stamps
   has_many :subordinate_users, class_name: 'User', foreign_key: :superior_id
   belongs_to :superior_user, class_name: 'User', foreign_key: :superior_id, optional: true
 

@@ -27,12 +27,12 @@
         .col-6.radio
           .btn.btn-uptech.btn-round
             / = f.radio_button :kind, :nobishiro
-            = f.label '伸びしろあり', for: 'kind_nobishiro'
+            = f.label '伸びしろあり', for: 'kind_potential', id: 'potential', class: 'stamp', data: { report_id: @report.id, kind: :potential }
 
         .col-6.radio
           .btn.btn-uptech.btn-round
             / = f.radio_button :kind, :fix
-            = f.label 'いいね', for: 'kind_fix'
+            = f.label 'いいね', for: 'kind_like', id: 'like', class: 'stamp', data: { report_id:  @report.id , kind: :like }
         .col-12
           = f.text_area :text, class: "form-control", placeholder: 'コメントを入力', size: '20x2'
           / %textarea.form-control{:placeholder => "コメントを入力", :rows => "5"}
@@ -54,3 +54,9 @@
 / %div
 /   いいね
 / = render "form"
+
+:javascript
+  var like = document.getElementById('like')
+  var potential = document.getElementById('potential')
+  new Stamp(like).onClickButton()
+  new Stamp(potential).onClickButton()

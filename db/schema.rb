@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120093835) do
+ActiveRecord::Schema.define(version: 20180121082000) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20180120093835) do
     t.datetime "updated_at", null: false
     t.boolean "checked", default: false, null: false
     t.index ["task_id"], name: "index_reports_on_task_id"
+  end
+
+  create_table "stamps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "report_id", null: false
+    t.integer "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_stamps_on_report_id"
+    t.index ["user_id"], name: "index_stamps_on_user_id"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,5 +69,7 @@ ActiveRecord::Schema.define(version: 20180120093835) do
   add_foreign_key "comments", "reports"
   add_foreign_key "comments", "users"
   add_foreign_key "reports", "tasks"
+  add_foreign_key "stamps", "reports"
+  add_foreign_key "stamps", "users"
   add_foreign_key "tasks", "users"
 end

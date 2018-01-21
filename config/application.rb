@@ -17,6 +17,10 @@ module UpTech
     # -- all .rb files in that directory are automatically loaded.
     config.eager_load_paths += Dir[Rails.root.join('app', 'decorators', 'modules')]
 
+
+    # エラーが起きたinputにfield_with_errorsクラスを当てない。
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
+
     config.generators do |g|
       g.helper false
 

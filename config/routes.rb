@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create]
   resources :menu, only: :index
   resources :comments, only: :new
+  resources :stamps, only: :create
 
   resources :tasks, only: [:index, :new, :create, :show] do
     resources :reports, only: [:new, :create], shallow: true do

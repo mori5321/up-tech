@@ -18,15 +18,15 @@
             %span
               = "#{@task.kind}"
           %h4.title 予定日時
-          %p 2017/02/03 (月) 12:00
+          %p= @task.start_to_finish
 
     .task-report-time
       = render "form"
-      %ul
-        %li
-          %h4.title 実行日時
-          = f.date_field :date, class: 'form-control'
-        %li
-          %h4.title 実行時間
-          = f.time_field :start_time, class: 'form-control'
+      / %ul
+      /   %li
+      /     %h4.title 実行日時
+      /     = f.date_field :date, class: 'form-control'
+      /   %li
+      /     %h4.title 実行時間
+      /     = f.time_field :start_time, class: 'form-control'
       = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'

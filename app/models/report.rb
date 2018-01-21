@@ -1,6 +1,7 @@
 class Report < ApplicationRecord
 
   has_many :comments
+  has_many :report
   belongs_to :task
 
   attr_accessor :month, :week, :date, :start_time, :finish_time
