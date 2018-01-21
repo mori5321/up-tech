@@ -3,11 +3,12 @@ class ReportsController < ApplicationController
   include Banken
 
   def new
-    @task = Task.find(params[:task_id])
+    task = Task.find(params[:task_id])
+    @task = task.decorate
     if @task.report.present? #仮実装
       redirect_to root_path
     else
-      @report = @task.report.build
+      @report = Report.new
     end
   end
 
