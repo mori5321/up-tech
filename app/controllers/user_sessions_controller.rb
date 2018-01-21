@@ -7,7 +7,6 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      #TODO トップページへリダイレクト
       redirect_back_or_to root_path, notice: 'ログインに成功しました'
     else
       flash.now[:alert] = 'ログインに失敗しました'
@@ -17,7 +16,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    #TODO トップページへリダイレクト
     redirect_to :sign_in, notice: 'ログアウトしました。'
   end
 end

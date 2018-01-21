@@ -12,9 +12,6 @@
       .input-group.form-group-no-border.input-lg
         = f.text_field :title, class: 'form-control', placeholder: 'タスク名を入力', required: true
 
-      / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
-      / 方針②各フォームを作成する。(月, 週, 日)
-      // 一旦①の方向で実装を進める。
       / %h5.title タスク期間選択
       .row#task-kind-selector
         .radio.col-4
@@ -27,17 +24,11 @@
           = f.radio_button :kind, :daily, checked: true
           = f.label :daily, for: 'task_kind_daily'
 
-      / TODO 部分テンプレートに分ける 月次, 週次, 日次
-      / 月次タスク用
       #schedule-form
         #monthly.hidden
           = render partial: "shared/forms/month", locals: { f: f }
-
-        / 週次タスク用
         #weekly.hidden
           = render partial: "shared/forms/week", locals: { f: f }
-
-        / 日時タスク用
         #daily
           = render partial: "shared/forms/day", locals: { f: f }
 

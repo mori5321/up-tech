@@ -6,17 +6,14 @@
         - @report.errors.full_messages.each do |message|
           %li= message
 
-  / 方針①JavaScriptで動的にフォームを変更する?(月, 週, 日)
-  / 方針②各フォームを作成する。(月, 週, 日)
-  // 一旦①の方向で実装を進める。
+  - if @task.monthly?
+    = render partial: "shared/forms/month", locals: { f: f }
 
-  / 月次タスク用
-  = render partial: "shared/forms/month", locals: { f: f }
+  - if @task.weekly?
+    = render partial: "shared/forms/week", locals: { f: f }
 
-  / 週次タスク用
-  = render partial: "shared/forms/week", locals: { f: f }
+  - if @task.daily?
+    = render partial: "shared/forms/day", locals: { f: f }
+  / .samp
+  /   = f.submit "登録", class: 'btn btn-uptech btn-round btn-lg btn-block'
 
-  / 日時タスク用
-  = render partial: "shared/forms/day", locals: { f: f }
-  .samp
-    = f.submit "登録"
