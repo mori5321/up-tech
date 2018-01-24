@@ -21,6 +21,12 @@ class Task < ApplicationRecord
 
   scope :dones, -> { select{ |t| t.report.present? } }
 
+  def self.fetch_tasks_for_the_month(date, user, kind)
+    first_date = DateTime.new(date.year, date.month, 1)
+    last_date = DateTime.new(date.year, date.month, -1, -1, -1, -1, -1)
+    self.where(kind: kind).where("start_datetime between ? and ?", first_date, last_date).where(user_id: user.id).order("start_datetime ASC")
+  end
+
   private
 
   def start_datetime_should_be_less_than_finish_datetime
