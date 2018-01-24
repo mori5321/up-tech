@@ -18,18 +18,25 @@
         %h4.title 予定日時
         %p
           = @task.slashed_start_datetime + "~" + @task.slashed_finish_datetime
-  .task-actions
-    .row
-      .col-6
-        = link_to new_task_report_path(@task), class: 'btn btn-uptech btn-round btn-lg btn-block' do
-          持ち越し
-      .col-6
-        = link_to new_task_report_path(@task), class: 'btn btn-uptech btn-round btn-lg btn-block' do
-          完了
-  .task-comments
-    %h5.title 上長からのコメント
-    %p コメントです
-    .task-comments-status
-      %ul
-        %li 上長からいいねされました
-        %li 上長から伸びしろありと評価されています
+  - unless @report
+    .task-actions
+      .row
+        .col-6
+          = link_to new_task_report_path(@task), class: 'btn btn-uptech btn-round btn-lg btn-block' do
+            持ち越し
+        .col-6
+          = link_to new_task_report_path(@task), class: 'btn btn-uptech btn-round btn-lg btn-block' do
+            報告
+  - if @report
+    .task-comments
+      %h5 実行日時
+      %p= "#{@report.start_to_finish}"
+  - if @comments
+    .task-comments
+      %h5.title 上長からのコメント
+      - @comments.each do |comment|
+        %p= comment.text
+        .task-comments-status
+          %ul
+            %li 上長からいいねされました
+            %li 上長から伸びしろありと評価されています
