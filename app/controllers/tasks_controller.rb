@@ -26,8 +26,12 @@ class TasksController < ApplicationController
   end
 
   def monthly
-    today = Date.today
-    @days = MonthlyCalendarService.new(today).to_a.flatten
+    @date = params[:date].try(:to_date) || Date.today
+    @prev_month = @date.advance(months: -1)
+    @next_month = @date.advance(months: 1)
+    daily_tasks = Task.fetch_tasks_for_the_month(@date, current_user, :daily)
+    @days = MonthlyCalendarService.new(@date, daily_tasks).to_a.flatten
+    @monthly_tasks = Task.fetch_tasks_for_the_month(@date, current_user, :monthly)
   end
 
   def weekly

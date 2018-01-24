@@ -2,12 +2,16 @@
   .container.calendar-monthly
     .month
       %ul
-        %li.prev ❮
-        %li.next ❯
+        %li.prev
+          = link_to monthly_tasks_path(date: @prev_month) do
+            ❮
+        %li.next
+          = link_to monthly_tasks_path(date: @next_month) do
+            ❯
         %li
-          August
+          = @date.strftime("%B")
           %br/
-          %span{:style => "font-size:12px"} 2017
+          %span{:style => "font-size:12px"}= @date.strftime("%Y")
     %ul.weekdays
       %li Mo
       %li Tu
@@ -18,7 +22,13 @@
       %li Su
     %ul.days
       - @days.each do |day|
-        %li= link_to day[:date], "#"
+        %li
+          - if day[:has_task]
+            = link_to "#" do
+              %span.active= day[:date]
+          - else
+            = link_to "#" do
+              = day[:date]
       / %li 1
       / %li 2
       / %li 3
@@ -56,9 +66,10 @@
       / %li
       / %li
     %ul.tasklist
-      %li
-        %span 月タスク
-        プロジェクト開始
-      %li
-        %span 月タスク
-        プロジェクト開始
+      - @monthly_tasks.each do |task|
+        %li
+          %span 月タスク
+          = task.title
+        %li
+          %span 月タスク
+          = task.title
