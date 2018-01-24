@@ -26,6 +26,8 @@ class TasksController < ApplicationController
   end
 
   def monthly
+    today = Date.today
+    @days = MonthlyCalendarService.new(today).to_a.flatten
   end
 
   def weekly
