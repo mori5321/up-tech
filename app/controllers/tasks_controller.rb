@@ -22,6 +22,8 @@ class TasksController < ApplicationController
   def show
     task = Task.find(params[:id])
     @task = task.decorate
+    @report = task.report.decorate if task.report
+    @comments = @report.comments if @report && @report.comments
     authorize! @task
   end
 
