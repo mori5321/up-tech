@@ -25,14 +25,10 @@ class MonthlyCalendarService
   private
     def has_task?(day)
       return false if day.nil?
-      datetime = DateTime.new(date.year, date.month, day).in_time_zone
-      datetime_end = DateTime.new(date.year, date.month, day, -1, -1, -1, -1).in_time_zone
+      datetime = DateTime.new(date.year, date.month, day)
+      datetime_end = DateTime.new(date.year, date.month, day, -1, -1, -1, -1)
       tasks_on_the_day = tasks.where("start_datetime BETWEEN ? AND ?", datetime, datetime_end)
       tasks_on_the_day.exists?
-    end
-
-    def to_jst(datetime)
-      datetime.advance(hours: 9)
     end
 
     def first_date
