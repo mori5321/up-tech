@@ -14,27 +14,38 @@
           %span{:style => "font-size:12px"} 2017
     .week-day
       %ul
-        %li
-          .day-title 2月3日(月)
-          .day-content 終日
-        %li
-          .day-title 2月4日(火)
-          .day-content 終日
-        %li
-          .day-title 2月5日(水)
-          .day-content 終日
-        %li
-          .day-title 2月6日(木)
-          .day-content 終日
-        %li
-          .day-title 2月7日(金)
-          .day-content 終日
-        %li
-          .day-title 2月8日(土)
-          .day-content 終日
-        %li
-          .day-title 2月9日(日)
-          .day-content 終日
+        - @days.each do |day|
+          %li
+            .day-title= day[:date]
+            - unless day[:tasks].empty?
+              - day[:tasks].each do |task|
+                .day-content
+                  = link_to task_path(task) do
+                    = task.decorate.start_time_to_finish_time + " / " + task.title
+            - else
+              .day-content
+                No task
+        / %li
+        /   .day-title 2月3日(月)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月4日(火)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月5日(水)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月6日(木)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月7日(金)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月8日(土)
+        /   .day-content 終日
+        / %li
+        /   .day-title 2月9日(日)
+        /   .day-content 終日
     %ul.tasklist
       %li
         %span 月タスク
