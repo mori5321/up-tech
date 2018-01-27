@@ -13,7 +13,7 @@
         %li
           = @date.beginning_of_week.strftime("%m/%d") + " ~ " + @date.end_of_week.strftime("%m/%d")
           %br/
-          %span{:style => "font-size:12px"} 2017
+          %span{:style => "font-size:12px"}= @date.year
     .week-day
       %ul
         - @days.each do |day|
@@ -49,9 +49,7 @@
         /   .day-title 2月9日(日)
         /   .day-content 終日
     %ul.tasklist
-      %li
-        %span 月タスク
-        プロジェクト開始
-      %li
-        %span 月タスク
-        プロジェクト開始
+      - @weekly_tasks.each do |task|
+        %li
+          %span 週タスク
+          = task.title
