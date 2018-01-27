@@ -3,13 +3,15 @@
     .month
       %ul
         %li.prev
-          ❮
-          %span>< 前週
+          = link_to weekly_tasks_path(date: @prev_week) do
+            ❮
+            / %span>< 前週
         %li.next
-          %span>< 次週
-          ❯
+          = link_to weekly_tasks_path(date: @next_week) do
+            /
+            ❯
         %li
-          1月1日 - 1月7日
+          = @date.beginning_of_week.strftime("%m/%d") + " ~ " + @date.end_of_week.strftime("%m/%d")
           %br/
           %span{:style => "font-size:12px"} 2017
     .week-day
