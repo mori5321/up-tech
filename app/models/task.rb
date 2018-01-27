@@ -27,6 +27,13 @@ class Task < ApplicationRecord
     self.where(kind: kind).where("start_datetime between ? and ?", first_date, last_date).where(user_id: user.id).order("start_datetime ASC")
   end
 
+  def self.fetch_tasks_for_the_week(date, user, kind)
+    datetime = date.to_datetime
+    first_date = datetime.beginning_of_week
+    last_date = datetime.end_of_week
+    self.where(kind: kind).where("start_datetime between ? and ?", first_date, last_date).where(user_id: user.id).order("start_datetime ASC")
+  end
+
   private
 
   def start_datetime_should_be_less_than_finish_datetime

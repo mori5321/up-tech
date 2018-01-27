@@ -35,6 +35,12 @@ class TasksController < ApplicationController
   end
 
   def weekly
+    @date = params[:date].try(:to_date) || Date.today
+    @prev_week = @date.advance(weeks: -1)
+    @next_week = @date.advance(weeks: 1)
+    daily_tasks = Task.fetch_tasks_for_the_week(@date, current_user, :daily)
+    @days = WeeklyCalendarService.new(@date, daily_tasks).to_a.flatten
+    @weekly_tasks = Task.fetch_tasks_for_the_week(@date, current_user, :weekly)
   end
 
   def daily

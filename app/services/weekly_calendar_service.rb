@@ -1,4 +1,4 @@
-class MonthlyCalendarService
+class WeeklyCalendarService
   attr_reader :date, :tasks
 
   def initialize(date, tasks)
@@ -7,15 +7,11 @@ class MonthlyCalendarService
   end
 
   def to_a
-    [
-      *Array.new(first_date.wday),
-      *1..last_date.day,
-      *Array.new(6 - last_date.wday)
-    ]
+    (first_date..last_date)
       .map { |date|
         {
           date: date || '' ,
-          has_task: has_task?(date)
+          tasks: tasks_on_the_day(date)
         }
       }
       .each_slice(7)
@@ -23,18 +19,18 @@ class MonthlyCalendarService
   end
 
   private
-    def has_task?(day)
+    def tasks_on_the_day(day)
       return false if day.nil?
-      datetime = DateTime.new(date.year, date.month, day)
+      datetime = day.to_datetime
       tasks_on_the_day = tasks.where("start_datetime BETWEEN ? AND ?", datetime, datetime.end_of_day)
-      tasks_on_the_day.exists?
+      return tasks_on_the_day
     end
 
     def first_date
-      Date.new(date.year, date.month, 1)
+      date.beginning_of_week
     end
 
     def last_date
-      Date.new(date.year, date.month, -1)
+      date.end_of_week
     end
 end
