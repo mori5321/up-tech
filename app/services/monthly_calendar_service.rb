@@ -26,8 +26,7 @@ class MonthlyCalendarService
     def has_task?(day)
       return false if day.nil?
       datetime = DateTime.new(date.year, date.month, day)
-      datetime_end = DateTime.new(date.year, date.month, day, -1, -1, -1, -1)
-      tasks_on_the_day = tasks.where("start_datetime BETWEEN ? AND ?", datetime, datetime_end)
+      tasks_on_the_day = tasks.where("start_datetime BETWEEN ? AND ?", datetime, datetime.end_of_day)
       tasks_on_the_day.exists?
     end
 
