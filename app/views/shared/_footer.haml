@@ -1,14 +1,14 @@
 %ul.bottom-navigation
   %li
-    = link_to '月', monthly_tasks_path, class: 'active'
+    = link_to '月', monthly_tasks_path, class: "#{'active' if action_name == 'monthly'}"
   %li
-    = link_to '週', weekly_tasks_path
+    = link_to '週', weekly_tasks_path, class: "#{'active' if action_name == 'weekly'}"
   %li
-    = link_to '日', daily_tasks_path
+    = link_to '日', daily_tasks_path, class: "#{'active' if action_name == 'daily'}"
   %li
-    = link_to '/tasks/new' do
+    = link_to '/tasks/new', class: "#{'active' if controller_name == 'tasks' && action_name == 'new'} " do
       %span.now-ui-icons.ui-1_simple-add
   %li
-    = link_to menu_index_path do
+    = link_to menu_index_path, class: "#{'active' if controller_name == 'menu'}" do
       %span.now-ui-icons.design_bullet-list-67
 
